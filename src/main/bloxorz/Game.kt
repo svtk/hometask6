@@ -17,7 +17,7 @@ interface Game {
     fun hasWon(): Boolean
 
     // should return the current State of the board;
-    // the format is the same as used in tests except for x (block) and (' ') closed bridges
+    // the format is the same as used in tests except for 'x' (block) and ' ' (closed bridges)
     override fun toString(): String
 
     // null - if there's no solution
