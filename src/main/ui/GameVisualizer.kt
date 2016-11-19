@@ -1,6 +1,5 @@
 package ui
 
-import _SurnameName.createGame
 import bloxorz.Direction.*
 import bloxorz.Game
 import java.awt.*
@@ -10,7 +9,7 @@ import javax.swing.JFrame
 import javax.swing.JPanel
 import javax.swing.WindowConstants
 
-class PlayGame(val game: Game, val settings: GameSettings) : JPanel() {
+class GameVisualizer(val game: Game, val settings: GameSettings) : JPanel() {
     init {
         isFocusable = true
         addKeyListener(object : KeyAdapter() {
@@ -132,16 +131,9 @@ fun playGame(game: Game, settings: GameSettings) {
         setSize(w, h)
         isResizable = true
 
-        add(PlayGame(game, settings))
+        add(GameVisualizer(game, settings))
 
         setLocationRelativeTo(null)
         isVisible = true
     }
-}
-
-fun main(args: Array<String>) {
-    val (board, bridgesInfo) = getSampleBoard()
-    val game = createGame(board, bridgesInfo)
-
-    playGame(game, BloxorzGameSettings)
 }
