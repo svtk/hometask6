@@ -18,7 +18,7 @@ class _10TestFirstMovesLightCells : TestFirstMoves() {
     fun testFall() = testFall(
             """
               .
-            S x x .
+            S * * .
                 .
             """,
             firstMove = RIGHT,

@@ -1,8 +1,6 @@
 package bridges
 
-import _SurnameName.bridge
-import _SurnameName.bridgesInfo
-import _SurnameName.switch
+import _SurnameName.*
 import bridges.BridgeState.OPENED
 import bridges.SwitchAction.OPEN
 import bridges.SwitchAction.CLOSE

@@ -19,7 +19,7 @@ fun boardAndBridgesInfo(args: Array<String>): Pair<String, BridgesInfo?> {
     val filePath = args.firstOrNull() ?: defaultFilePath()
 
     val file = File(filePath)
-    val bridgesInfo = bridgeInfoForLevels[filePath.substringAfter("/")]
+    val bridgesInfo = bridgeInfoForLevels[filePath.substringAfterLast("/")]
 
     val board = file.readText()
     return board to bridgesInfo

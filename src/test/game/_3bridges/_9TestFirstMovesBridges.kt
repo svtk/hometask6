@@ -1,5 +1,6 @@
 package game._3bridges
 
+import bloxorz.Direction.LEFT
 import bloxorz.Direction.RIGHT
 import game.TestFirstMoves
 import bridges.fullBlockBridge
@@ -11,6 +12,9 @@ import org.junit.Test
 class _9TestFirstMovesBridges : TestFirstMoves() {
     @Test
     fun testInitialBridgeState() = testMove(simpleBridge, "S * * a A", "S x x   A", RIGHT)
+
+    @Test
+    fun testFallOffTheBridge() = testFall("S * a *", simpleBridge, null, listOf(RIGHT))
 
     @Test
     fun testClosingBridge() = testMove(simpleBridge, "S * A a *", "S x x a *", RIGHT)
@@ -35,4 +39,7 @@ class _9TestFirstMovesBridges : TestFirstMoves() {
 
     @Test
     fun testTwoBridges() = testMove(twoBridges, "S A B a * b *", "S x x a * b *", RIGHT)
+
+    @Test
+    fun testTwoBridgesSwitch() = testMove(twoBridges, "S A B a * b *", "S x x   *   *", RIGHT, LEFT, RIGHT)
 }

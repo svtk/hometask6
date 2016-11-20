@@ -86,7 +86,7 @@ abstract class TestFirstMoves: TestGame() {
         for (direction in directions) {
             game.processMove(direction)
         }
-        Assert.assertEquals("The block should move as specified", result.trimIndent(), game.toString())
+        Assert.assertEquals("The block should move as specified", result.trimIndent().normalizeEndings(), game.toString().normalizeEndings())
     }
 
     fun testFall(input: String, firstMove: Direction? = null, fallDirections: List<Direction> = Direction.values().toList()) {
@@ -96,10 +96,13 @@ abstract class TestFirstMoves: TestGame() {
     fun testFall(input: String, bridgesInfo: BridgesInfo?, firstMove: Direction? = null, directions: List<Direction> = Direction.values().toList()) {
         val game = createGame(input.trimIndent(), bridgesInfo)
         val initialState = game.toString()
-        if (firstMove != null) game.processMove(firstMove)
         for (direction in directions) {
+            // game is going to be reset after each fall, so make the first move each time
+            if (firstMove != null) game.processMove(firstMove)
             game.processMove(direction)
-            Assert.assertEquals("The block should fall from the board and return to its start position", initialState, game.toString())
+            Assert.assertEquals("The block should fall from the board and return to its start position", initialState.normalizeEndings(), game.toString().normalizeEndings())
         }
     }
+
+    private fun String.normalizeEndings() = lines().joinToString("\n")
 }
