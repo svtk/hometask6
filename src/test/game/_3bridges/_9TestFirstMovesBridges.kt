@@ -14,7 +14,7 @@ class _9TestFirstMovesBridges : TestFirstMoves() {
     fun testInitialBridgeState() = testMove(simpleBridge, "S * * a A", "S x x   A", RIGHT)
 
     @Test
-    fun testFallOffTheBridge() = testFall("S * a *", simpleBridge, null, listOf(RIGHT))
+    fun testFallOffTheBridge() = testFall("S * a a *", simpleBridge, null, listOf(RIGHT))
 
     @Test
     fun testClosingBridge() = testMove(simpleBridge, "S * A a *", "S x x a *", RIGHT)
